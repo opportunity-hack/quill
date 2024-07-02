@@ -16,12 +16,12 @@
     },
     "ADMIN_EMAIL": {
       "description": "Credentials for the admin user created at app initialization",
-      "value": "admin@example.com"
+      "value": "admin@apply.ohack.dev"
     },
     "ADMIN_PASS": "party",
     "EMAIL_ADDRESS": {
       "description": "The email address that is included in the 'email us' link at the bottom of emails.",
-      "value": "team@example.com"
+      "value": "team@apply.ohack.dev"
     },
     "HACKATHON_NAME": "Hackathon",
     "TWITTER_HANDLE": {
@@ -34,7 +34,7 @@
     },
     "EMAIL_CONTACT": {
       "description": "Used to send verification, registration, and confirmation emails",
-      "value": "Hackathon Team <team@example.com>"
+      "value": "Hackathon Team <team@apply.ohack.dev>"
     },
 
     "EMAIL_HEADER_IMAGE": "https://s3.amazonaws.com/hackmit-assets/Banner_600.jpg",
