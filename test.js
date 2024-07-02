@@ -7,3 +7,10 @@ describe("Get Login", () => {
     expect(res.statusCode).toEqual(200);
   });
 });
+
+describe("Get status of resend's email", () => {
+  it("Should Get the status of resend", async () => {
+    const res = await request(app).get("/verify/resend");
+    expect(res.statusCode).toEqual(200);
+  });
+});
