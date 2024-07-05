@@ -8,7 +8,8 @@
     "angular": "^1.8.0",
     "angular-ui-router": "^1.0.26",
     "async": "^2.6.3",
-    "bcrypt": "^3.0.8",
+    "axios": "^1.7.2",
+    "bcrypt": "^5.1.1",
     "body-parser": "^1.19.0",
     "browserify": "^16.5.1",
     "browserify-ngannotate": "^2.0.0",
@@ -47,6 +48,9 @@
     "eslint": "./node_modules/.bin/eslint './**/*.js'"
   },
   "devDependencies": {
+    "@babel/core": "^7.24.7",
+    "@babel/preset-env": "^7.24.7",
+    "babel-jest": "^29.7.0",
     "eslint": "^6.8.0",
     "gulp": "^3.9.1",
     "gulp-clean-css": "^4.3.0",
@@ -63,5 +67,8 @@
   },
   "engines": {
     "node": "10.17.0"
+  },
+  "transform": {
+    "^.+\\.js$": "babel-jest"
   }
 }
