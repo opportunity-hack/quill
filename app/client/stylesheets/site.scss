@@ -4,9 +4,9 @@ $font-body: 'Lato', 'Helvetica Neue', 'Helvetica', sans-serif;
 $font-header: 'Montserrat', 'Helvetica Neue', 'Helvetica', sans-serif;
 
 // Login screen variables
-$login-bg-color: $secondary;
+$login-bg-color: $tertiary;
 $login-color: $primary;
-$register-color: $tertiary;
+$register-color: $secondary;
 
 $status-unverified-color: rgb(82, 82, 82);
 $status-incomplete-color: #F5F5F5;
@@ -22,7 +22,7 @@ $status-rejected-color: red; // Not used
 $sidebar-color: $primary;
 $sidebar-width: 265px;
 $sidebar-transition-time: .5s;
-$sidebar-tab-size: 55px;
+$sidebar-tab-size: 50px;
 
 // Page variables
 $page-header-color: $secondary;
