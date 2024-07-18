@@ -36,6 +36,14 @@
     &.logo {
       opacity: 1;
       padding: 48px;
+      text-align: center; 
+      img {
+        max-width: 80%; 
+        max-height: 150px;
+        height: auto; 
+        display: block; 
+        margin: 0 auto; 
+      }
     }
 
   }
@@ -72,6 +80,13 @@
       color: white;
       font-size: 2em;
     }
+
+    img.logo {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain; // Ensure the logo fits within the tab without overflow
+      display: block; // Ensures the image is treated as a block element for centering
+    }
   }
 
 }
@@ -103,3 +118,4 @@
     }
   }
 }
+
