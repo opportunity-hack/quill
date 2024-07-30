@@ -326,13 +326,15 @@ schema.statics.getByToken = function (token, callback) {
 };
 
 schema.statics.validateProfile = function (profile, cb) {
+  var validYears = ["2020", "2021", "2022", "2023", "2024", "2025", "2026", "2027"];
+  var validGenders = ["M", "F", "O", "N"];
   return cb(
     !(
       profile.name.length > 0 &&
       profile.adult &&
       profile.school.length > 0 &&
-      ["2016", "2017", "2018", "2019"].indexOf(profile.graduationYear) > -1 &&
-      ["M", "F", "O", "N"].indexOf(profile.gender) > -1
+      validYears.indexOf(profile.graduationYear) > -1 &&
+      validGenders.indexOf(profile.gender) > -1
     )
   );
 };
