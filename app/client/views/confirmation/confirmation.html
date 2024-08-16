@@ -73,15 +73,6 @@
             </select>
           </div>
 
-          <div class="field">
-            <label>
-              Will you be needing hardware?
-            </label>
-            <div class="ui checkbox">
-              <input type="checkbox" ng-model="user.confirmation.wantsHardware">
-              <label> Yes, I would like to use hardware in my hack. </label>
-            </div>
-          </div>
 
           <div
             class="field"
@@ -118,92 +109,30 @@
           </div>
 
           <div class="field">
-            <label> Twitter </label>
+            <label> Threads </label>
             <input type="text"
                    name="twitter"
-                   placeholder="https://twitter.com/foobar"
+                   placeholder="https://threads.net/@foobar"
                    ng-model="user.confirmation.twitter">
           </div>
 
           <div class="field">
-            <label> Skill Sheet (required) </label>
-            <p>
-              Upload a document outlining any skills or experience you'd like to share (ex. resume). PDF preferred!
-            </p>
-            <a
-              target="_blank"
-              href="https://go.hackmit.org/skill-sheets"
-              class="ui pink button">
-              Upload
-            </a>
-          </div>
-
-          <br>
-          <br>
-
-          <div class="divided title">Hosting Details</div>
-
-          <p>
-            Would you like us to find you a host? We can match you with someone so you can catch some zzz's the night before and/or the night of the event!
-          </p>
-
-          <div class="field">
-            <div class="ui checkbox">
-              <input type="checkbox" ng-model="user.confirmation.hostNeededFri">
-              <label>
-                <strong>
-                  I would like a host for Friday, Sept. 18th.
-                </strong>
-              </label>
-            </div>
-          </div>
-
-          <div class="field">
-            <div class="ui checkbox">
-              <input type="checkbox" ng-model="user.confirmation.hostNeededSat">
-              <label>
-                <strong>
-                I would like a host for Saturday, Sept. 19th.
-                </strong>
-              </label>
-            </div>
-          </div>
-
-          <div
-            ng-show="user.confirmation.hostNeededFri || user.confirmation.hostNeededSat">
-
-            <div class="field">
-              <div class="ui checkbox">
-                <input type="checkbox" ng-model="user.confirmation.genderNeutral">
-                <label> I would be okay with gender neutral housing. </label>
-              </div>
-            </div>
-
-            <div class="field">
-              <div class="ui checkbox">
-                <input type="checkbox" ng-model="user.confirmation.smokingFriendly">
-                <label> I would be okay in housing with smoking-friendly policies. </label>
-              </div>
-            </div>
-
-            <div class="field">
-              <div class="ui checkbox">
-                <input type="checkbox" ng-model="user.confirmation.catFriendly">
-                <label> I would be okay in housing that has cats. Meow! </label>
-              </div>
-            </div>
-
-
-            <div class="field">
-              <label>
-                Let us know if there's anything else we should know about matching you with a host.
-              </label>
-              <textarea
-                name="hostNotes"
-                ng-model="user.confirmation.hostNotes">
-              </textarea>
-            </div>
-
+            <label>Profile Update (Required)</label>
+            <p>Before the hackathon, all participants must update their profile on <a href="https://ohack.dev/profile" target="_blank">ohack.dev/profile</a>. This is a crucial step to ensure we can match you effectively with projects and team members. Please make sure to:</p>
+            <ol>
+              <li> Visit <a href="https://ohack.dev/profile" target="_blank">ohack.dev/profile</a> and log in to your account. </li>
+              <li> Update your skills, experience, and areas of expertise. </li>
+              <li> Upload a current resume or skill sheet (PDF format preferred). </li>
+            </ol>
+            <p>Your profile should include:</p>
+            <ul>
+              <li> Technical skills and proficiency levels </li>
+              <li> Relevant experience (professional, academic, or personal projects) </li>
+              <li> Areas of interest within technology and social impact </li>
+              <li> Any specific skills or experience you'd like to share with potential team members </li>
+            </ul>
+            <p>Completing this step is mandatory for participation in the hackathon. It helps us create balanced teams and allows other participants to understand your background and strengths.</p>
+            <p>Remember: A comprehensive profile increases your chances of finding the perfect project match and showcases your abilities to potential teammates and mentors.</p>
           </div>
 
           <br>
@@ -212,16 +141,31 @@
           <div class="divided title">Travel</div>
 
           <div class="field">
+            <label> Travel Reimbursement Policy for Arizona Opportunity Hack </label>
             <p>
-              As a reminder, our reimbursement policy is as follows:
+              We want to make it as easy as possible for you to join us at Opportunity Hack Arizona! Our reimbursement policy is designed to help offset your travel costs:
             </p>
             <ul>
-              <li> Up to $100 from within Massachusetts </li>
-              <li> Up to $200 from anywhere else in North America </li>
-              <li> Up to $500 from outside North America </li>
+              <li> Up to $25 for travel within Arizona </li>
+              <li> Up to $150 for travel from neighboring states (California, Nevada, Utah, Colorado, New Mexico) </li>
+              <li> Up to $200 for travel from elsewhere in the United States </li>
+              <li> Up to $300 for international travel </li>
             </ul>
             <p>
-              We’ll also be sending buses free of charge to Princeton, NJ; New York, NY; New Haven, CT; and Providence, RI. Again, we only reimburse the minimum-cost travel path. Head back to the dashboard to read our full travel policy.
+              Please note:
+            </p>
+            <ol>
+              <li> We only reimburse the minimum-cost travel path. This means using the most economical mode of transportation available. </li>
+              <li> If you're driving from within Arizona or neighboring states, we encourage carpooling. Ask in Slack in #travel to help you connect with other participants for ride-sharing. </li>
+              <li> For those flying in, we recommend flying into Phoenix Sky Harbor International Airport (PHX). </li>
+              <li> All reimbursements will be processed after the hackathon. You'll need to submit receipts and follow our reimbursement procedure, which will be explained during the event. </li>
+              <li> If you require special accommodations or have questions about travel arrangements, please contact our team in our #travel Slack channel </li>
+            </ol>
+            <p>
+              For full details on our travel policy, eligibility requirements, and reimbursement process, please visit your participant dashboard.
+            </p>
+            <p>
+              We're excited to welcome you to Arizona for an amazing hackathon experience!
             </p>
           </div>
 
