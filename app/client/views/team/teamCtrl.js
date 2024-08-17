@@ -43,6 +43,7 @@ angular.module('reg')
             $scope.error = response.data.message;
           });
       };
+      
       $scope.joinTeam = function() {
         UserService.joinTeam($scope.code)
           .then(response => {
