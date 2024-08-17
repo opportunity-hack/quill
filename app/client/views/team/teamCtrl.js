@@ -16,6 +16,8 @@ angular.module('reg')
 
       $scope.TEAM = TEAM;
 
+      $scope.showNote = !$scope.user.teamCode;
+
       function _populateTeammates() {
         UserService
           .getMyTeammates()
@@ -29,18 +31,31 @@ angular.module('reg')
         _populateTeammates();
       }
 
-      $scope.joinTeam = function(){
-        UserService
-          .joinOrCreateTeam($scope.code)
+      $scope.createTeam = function() {
+        UserService.createTeam($scope.code)
           .then(response => {
             $scope.error = null;
             $scope.user = response.data;
+            $scope.showNote = false;
             _populateTeammates();
-          }, response => {
+          })
+          .catch(response => {
             $scope.error = response.data.message;
           });
       };
-
+      $scope.joinTeam = function() {
+        UserService.joinTeam($scope.code)
+          .then(response => {
+            $scope.error = null;
+            $scope.user = response.data;
+            $scope.showNote = false;
+            _populateTeammates();
+          })
+          .catch(response => {
+            $scope.error = response.data.message;
+          });
+      };
+      
       $scope.leaveTeam = function(){
         UserService
           .leaveTeam()
@@ -48,6 +63,7 @@ angular.module('reg')
             $scope.error = null;
             $scope.user = response.data;
             $scope.teammates = [];
+            $scope.showNote = true;
           }, response => {
             $scope.error = response.data.message;
           });
