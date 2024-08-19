@@ -279,7 +279,7 @@ module.exports = function(router) {
    * }
    */
 
-  // Route for joining a team
+  // Route for creating a team
   router.post('/users/:id/team', isOwnerOrAdmin, function(req, res) {
     var code = req.body.code;
     var id = req.params.id;

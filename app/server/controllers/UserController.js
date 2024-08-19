@@ -488,7 +488,7 @@ UserController.createOrJoinTeam = function(id, code, isCreate, callback) {
       if (isCreate) {
         // Logic for creating a team
         if (existingTeam) {
-          return callback({ message: "Team already exists." });
+          return callback({ message: "This team name is already in use. Consider selecting a different name." });
         }
 
         // Create the team by setting the user's team code 
@@ -500,6 +500,11 @@ UserController.createOrJoinTeam = function(id, code, isCreate, callback) {
         );
       } else {
         // Logic for joining a team
+        if (!existingTeam) {
+          // Team does not exist, return an error
+          return callback({ message: "This team does not appear to exist. Consider creating it." });
+        }
+
         const teamMembers = users.filter(user => user.teamCode && user.teamCode.toLowerCase() === normalizedCode);
         
         if (existingTeam && teamMembers.length >= maxTeamSize) {
