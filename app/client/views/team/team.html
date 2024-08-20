@@ -2,6 +2,9 @@
   <div class="divided title">
     Team
   </div>
+  <p ng-show="showNote" class="ui purple message">
+    Note: To join a team, one member must create the team. Other members can join by entering the team name in the bar and clicking "Join."
+  </p>
   <div class="ui stackable centered page grid">
     <div class="column">
       <div
@@ -38,10 +41,18 @@
           <div class="field">
             <button
               class="ui fluid pink button"
-              ng-click="joinTeam()">
-              Join or Create Team
+              ng-click="createTeam()">
+              Create Team
             </button>
           </div>
+          
+          <div class="field">
+            <button
+              class="ui fluid blue button"
+              ng-click="joinTeam()">
+              Join Team
+            </button>
+          </div>          
 
         </div>
 

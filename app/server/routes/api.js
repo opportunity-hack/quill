@@ -278,13 +278,35 @@ module.exports = function(router) {
    *   code: STRING
    * }
    */
-  router.put('/users/:id/team', isOwnerOrAdmin, function(req, res){
+
+  // Route for creating a team
+  router.post('/users/:id/team', isOwnerOrAdmin, function(req, res) {
     var code = req.body.code;
     var id = req.params.id;
 
-    UserController.createOrJoinTeam(id, code, defaultResponse(req, res));
-
+    UserController.createOrJoinTeam(id, code, true, function(err, user) {
+      if (err) {
+        return res.status(400).json({ message: err.message });
+      }
+      res.json(user);
+    });
   });
+
+  // Route for joining a team
+  router.put('/users/:id/team', isOwnerOrAdmin, function(req, res) {
+    var code = req.body.code;
+    var id = req.params.id;
+
+    UserController.createOrJoinTeam(id, code, false, function(err, user) {
+      if (err) {
+        return res.status(400).json({ message: err.message });
+      }
+      res.json(user);
+    });
+  });
+
+
+  
 
   /**
    * Remove a user from a team.

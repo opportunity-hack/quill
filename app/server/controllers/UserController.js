@@ -462,51 +462,65 @@ UserController.getTeammates = function (id, callback) {
  * Given a team code and id, join a team.
  * @param  {String}   id       Id of the user joining/creating
  * @param  {String}   code     Code of the proposed team
+ * @param  {Boolean}  isCreate Indicates if the operation is to create a team
  * @param  {Function} callback args(err, users)
- */
-UserController.createOrJoinTeam = function (id, code, callback) {
+ **/
+
+UserController.createOrJoinTeam = function(id, code, isCreate, callback) {
   if (!code) {
-    return callback({
-      message: "Please enter a team name.",
-    });
+    return callback({ message: "Please enter a team name." });
   }
 
   if (typeof code !== "string") {
-    return callback({
-      message: "Get outta here, punk!",
-    });
+    return callback({ message: "Invalid team name." });
   }
 
-  User.find({
-    teamCode: code,
-  })
-    .select("profile.name")
-    .exec(function (err, users) {
-      // Check to see if this team is joinable (< team max size)
-      if (users.length >= maxTeamSize) {
-        return callback({
-          message: "Team is full.",
-        });
-      }
+  // Convert the input code to lowercase for case-insensitive comparison
+  const normalizedCode = code.toLowerCase();
 
-      // Otherwise, we can add that person to the team.
-      User.findOneAndUpdate(
-        {
-          _id: id,
-          verified: true,
-        },
-        {
-          $set: {
-            teamCode: code,
-          },
-        },
-        {
-          new: true,
-        },
-        callback
-      );
+  User.find({})
+    .exec(function(err, users) {
+      if (err) return callback(err);
+
+      // Normalize all stored team codes for comparison
+      const existingTeam = users.find(user => user.teamCode && user.teamCode.toLowerCase() === normalizedCode);
+
+      if (isCreate) {
+        // Logic for creating a team
+        if (existingTeam) {
+          return callback({ message: "This team name is already in use. Consider selecting a different name." });
+        }
+
+        // Create the team by setting the user's team code 
+        User.findOneAndUpdate(
+          { _id: id, verified: true },
+          { $set: { teamCode: code } }, 
+          { new: true },
+          callback
+        );
+      } else {
+        // Logic for joining a team
+        if (!existingTeam) {
+          // Team does not exist, return an error
+          return callback({ message: "This team does not appear to exist. Consider creating it." });
+        }
+
+        const teamMembers = users.filter(user => user.teamCode && user.teamCode.toLowerCase() === normalizedCode);
+        
+        if (existingTeam && teamMembers.length >= maxTeamSize) {
+          return callback({ message: "Team is full." });
+        }
+
+        User.findOneAndUpdate(
+          { _id: id, verified: true },
+          { $set: { teamCode: existingTeam ? existingTeam.teamCode : code } }, // Use existing case or original case
+          { new: true },
+          callback
+        );
+      }
     });
 };
+
 
 /**
  * Given an id, remove them from any teams.
