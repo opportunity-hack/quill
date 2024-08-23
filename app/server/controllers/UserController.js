@@ -481,6 +481,11 @@ UserController.createOrJoinTeam = function(id, code, isCreate, callback) {
   User.find({})
     .exec(function(err, users) {
       if (err) return callback(err);
+      const userWithProfile = users.find(user => user.id.toString() === id && user.status && user.status.admitted === true);
+
+      if (!userWithProfile) {
+        return callback({ message: "You can only join or create a team once your profile is completed and you have been accepted." });
+      }
 
       // Normalize all stored team codes for comparison
       const existingTeam = users.find(user => user.teamCode && user.teamCode.toLowerCase() === normalizedCode);
@@ -508,7 +513,7 @@ UserController.createOrJoinTeam = function(id, code, isCreate, callback) {
         const teamMembers = users.filter(user => user.teamCode && user.teamCode.toLowerCase() === normalizedCode);
         
         if (existingTeam && teamMembers.length >= maxTeamSize) {
-          return callback({ message: "Team is full." });
+          return callback({ message: `Team is full. The maximum number of team members allowed is ${maxTeamSize}.` });
         }
 
         User.findOneAndUpdate(
